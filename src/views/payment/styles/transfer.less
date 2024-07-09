@@ -1,0 +1,79 @@
+.transfer {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  .transfer-main {
+    background-color: #242738;
+    box-shadow: inset 0 0 0.05128rem 0.02564rem #2f334a;
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    .transfer-input-from {
+      border: 2px solid #25eeb1;
+      border-radius: 4px;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      .transfer-input-title {
+        color: #25eeb1;
+        font-weight: bold;
+      }
+      .transfer-input-content {
+        word-break: break-all;
+      }
+    }
+    .transfer-input-to {
+      border: 2px solid #CCCCCC;
+      border-radius: 4px;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      .transfer-input-title {
+        color: #b8c2d9;
+        font-weight: bold;
+      }
+      .transfer-input-content {
+        word-break: break-all;
+      }
+    }
+    .transfer-input-amount {
+      border: 2px solid #CCCCCC;
+      border-radius: 4px;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      .transfer-input-title {
+        color: #25eeb1;
+        display: flex;
+        justify-content: space-between;
+      }
+      .transfer-dollar {
+        color: #acb5c5;
+        font-size: 14px;
+      }
+    }
+  }
+  .transfer-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    .send-button {
+      height: 50px;
+      color: #000;
+      font-size: 15px;
+      font-weight: bold;
+    }
+    .reset-button {
+      height: 50px;
+      font-size: 15px;
+      color: #FFF;
+      font-weight: bold;
+    }
+  }
+}

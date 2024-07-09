@@ -1,0 +1,22 @@
+.toggle-view {
+    width: 36px;
+    height: 20px;
+    border-radius: 20px;
+    border: 2.2px solid @c1;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+
+    >div {
+        position: relative;
+        width: 12px;
+        height: 12px;
+        background: @c1;
+        border-radius: 100%;
+        left: 2px;
+
+        &.isEn {
+            transform: translateX(15px);
+        }
+    }
+}

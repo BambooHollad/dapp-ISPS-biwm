@@ -1,0 +1,31 @@
+.moduleItemContainer {
+    &>div {
+        .address{
+            width: 60%;
+        }
+        .trx{
+            width: 20%;
+        }
+        .get{
+            width: 20%;
+        }
+    }
+}
+
+@media (max-width: 639px) {
+    .moduleItemContainer {
+        &>div {
+            .address{
+                width: 56%;
+            }
+            .trx{
+                width: 22%;
+                text-align: center;
+            }
+            .get{
+                width: 22%;
+                text-align: right;
+            }
+        }
+    }
+}

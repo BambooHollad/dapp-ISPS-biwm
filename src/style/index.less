@@ -1,0 +1,61 @@
+/* 此文件为项目全局样式 */
+:root {
+    --f7-theme-color: @c1;
+}
+
+body {
+    font-size: 14px !important;
+    color: #ffffff;
+
+    img {
+        display: block;
+    }
+    p{
+        margin: 0;
+    }
+}
+.framework7-root {
+    z-index: 1999;
+}
+.ios {
+    --f7-navbar-height: 45px;
+    --f7-navbar-title-font-weight: normal;
+    --f7-tabbar-labels-height: 52px;
+    --f7-button-font-weight: normal;
+    --f7-button-border-radius: 4px;
+    --f7-button-fill-pressed-bg-color: rgba(@c1, 0.7);
+
+    .page {
+        font-family: Roboto, sans-serif;
+        background: @c2;
+    }
+}
+// .page-previous {
+//     transform: translate3d(-100%, 0, 0)!important;
+// }
+.icon-isps {
+    background: url('../assets/images/isps-logo.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.ant-tree-list-holder-inner {
+    background: #000;
+    color: #FFF;
+    padding: 10px 0;
+}
+
+.picker.sheet-modal {
+    background: #242738;
+    color: #FFF;
+    .toolbar-top {
+        background: #242738;
+        border-bottom: 1px solid #111;
+    }
+    .picker-item {
+        font-size: 14px;
+        color: rgba(255, 255, 255, .6);
+    }
+    .picker-item-selected {
+        color: rgba(255, 255, 255, 1);
+    }
+}

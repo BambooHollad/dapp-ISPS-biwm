@@ -1,0 +1,107 @@
+.linkModule {
+    padding-top: 20px;
+    text-align: center;
+    margin-bottom: 10px;
+
+    .IOdometer {
+        width: 350px;
+        height: 80px;
+        margin: 0 auto 20px;
+        box-sizing: border-box;
+        font-size: 30px;
+        background: url("@/assets/IOdometer.png") no-repeat no-repeat center center / 100% 100%;
+        color: #ffffff !important;
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .icon{
+            margin-right: 3px;
+            background: url("@/assets/IOdometerNum.png") no-repeat no-repeat center center / 100% 100%;
+            padding: 0px 4px;
+            font-size: 35px;
+        }
+        .IOdometerCon{
+            /deep/ .odometer-digit{
+                padding: 0px 4px;
+                margin-right: 2px;
+                background: url("@/assets/IOdometerNum.png") no-repeat no-repeat center center / 100% 100%;
+            }
+        }
+    }
+
+    .title {
+        margin-bottom: 20px;
+        margin-top: 50px;
+    }
+
+    .link {
+        display: flex;
+        justify-content: center;
+        >div {
+            margin: 0px 25px 25px 25px;
+            >a {
+                color: #ffffff;
+                font-size: 14px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                box-sizing: border-box;
+                padding:0px 2px 1px 0px;
+                width: 135px;
+                height: 35px;
+                text-decoration: none;
+                background: url("@/assets/btn.png") no-repeat no-repeat center center / 100% 100%;
+            }
+        }
+    }
+    .imgContainer{
+        position: relative;
+        margin-top: 3%;
+        .top-heading{
+            display: block;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+    }
+    .myLogo{
+        display: block;
+        width: 85px;
+        height: 85px;
+        margin: 0 auto 15px;
+        border-radius: 100%;
+        background: #fff;
+    }
+}
+
+@media (max-width: 959px) {
+    .linkModule {
+        .title {
+            font-size: 12px;
+        }
+    }
+}
+
+@media (max-width: 424px) {
+    .linkModule {
+        .IOdometer {
+            width: 270px;
+            height: 60px;
+            font-size: 20px;
+            .icon{
+                font-size: 23px;
+            }
+            transform: scale(0.8);
+        }
+        .link{
+            >div{
+                a{
+                    font-size: 12px;
+                    padding:0px 2px 2px 0px;
+                    width: 105px;
+                    height: 28px;
+                }
+            }
+        }
+    }
+}

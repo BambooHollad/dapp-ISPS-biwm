@@ -1,0 +1,21 @@
+.myInput {
+    margin: 30px 25px;
+    color: black;
+}
+.light-view {
+    display: flex;
+    align-items: center;
+
+    img {
+        width: 14px;
+        filter: grayscale(100%);
+
+        &:not(:last-child) {
+            margin-right: 5px;
+        }
+
+        &.light {
+            filter: grayscale(0%);
+        }
+    }
+}

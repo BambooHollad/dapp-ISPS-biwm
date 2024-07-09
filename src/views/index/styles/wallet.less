@@ -1,0 +1,63 @@
+.wallet {
+  padding: 20px 15px 100px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  .content-box {
+    padding: 20px;
+    background: #242738;
+    border-radius: 6px;
+    text-align: center;
+  }
+  .wallet-box {
+    display: flex;
+    justify-content: space-between;
+    .wallet-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      p {
+        &:nth-child(1) {
+          font-size: 14px;
+          color: rgba(255, 255, 255, .7);
+        }
+        &:nth-child(2) {
+          font-size: 20px;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+  .withdrawal-btn {
+    width: 200px;
+    height: 40px;
+    border-radius: 6px;
+    margin-top: 30px;
+    background: @c1;
+    font-size: 16px;
+    color: #000;
+    font-weight: 500;
+  }
+  .invite-box {
+    display: flex;
+    justify-content: space-between;
+    span {
+      height: 20px;
+      line-height: 20px;
+      font-size: 16px;
+      padding-left: 30px;
+      background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAMAAAC7IEhfAAAAgVBMVEVHcEwvz58x0Z0x0Z0x0Z0vz5svz50w0pwvz50vz58vz5cw0Jwv0Z0vz58vz5wx0J0vz50x0p0w0J0x0J0xz50x0J4x0J0vz50w0J4w0J0w0J0x0Z0x0J0xz50w0Z0x0Z0w0Z0vz5wy0Z0w0Jww0Z0x0Z0x0J4w0Zsvz58x0pwx0Z7GE+oFAAAAKnRSTlMAEO/fz0Bwf4AgII+AQGCwoJ+fkJDAoLDgv6+/v4DPr69QcH/fgNBfYI8GoK7hAAABO0lEQVR42oXR2W7DIBRF0cMFU9upp6RJMzVD557//8AKRTI4hrAe7Q0XBKYKu/8UUk77skCS+hAG9LKOZwvOxFIrjNAt7iyYsEBI7ZhkFDzDB46zudnpLTMs4FSaGaLg9HTywytGrJuq2dBTiQ3f7s9eAtCxTl3kVOPZnxIoop0heQz/FShTHSU8vsVrquMQ7tjBcEoDhufbG/fhZ+FUhyv/YKkVnugJ7uZyiV8XiXZdANMOW4HSbNFz2hESdi6yuPA6u6Ngy9Fwu++OZv4MJlzaoKdjxnt4HSxHNZIdy+kzHVIdG0CCVdVaztFOA3jm6AdOpOMAQNFbFnWxY0QNACtmDXCUMEPXgGOZ0cLJD3/B6MAHDDxlmLRWCK0yc71WM0LeMVNtItspeGGqGZAvhaSm7L6FlG1nm+mff+13tcdbPZ0IAAAAAElFTkSuQmCC') no-repeat left center;
+      background-size: 20px 20px;
+    }
+    i {
+      width: 20px;
+      height: 20px;
+      display: block;
+      background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABkSURBVHgB7ZTBCQAhDASXq8QSLNFOLeFKyOUROPGnjw3oDuQXmCGPAEJsYmbFp8cUsHFpsx9+xHABRcwRr08FE0UoQhELEX3eeXAqqV9Scsmz5byHc688AlqaPAJqXIAvF0fxARfY36N0D6E4AAAAAElFTkSuQmCC') no-repeat center center;
+      background-size: 20px 20px;
+    }
+  }
+}

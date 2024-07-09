@@ -1,0 +1,112 @@
+.join-module {
+
+    text-align: center;
+
+    .title {
+        position: relative;
+        font-size: 50px;
+        margin: 0 0 35px;
+        top: 45px;
+    }
+
+    .join {
+        background: url(@/assets/mobile-join.png) no-repeat;
+        -webkit-background-size: 100% 100%;
+        background-size: 100% 100%;
+        position: relative;
+        padding: 110px 125px 120px 135px;
+        margin-bottom: 10px;
+        max-width: 100%;
+
+        .inputCon {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 2px solid #fff;
+            padding: 10px 15px;
+            line-height: 1;
+            font-size: 26px;
+            margin-bottom: 30px;
+        }
+
+        .btnGroup {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 0px;
+
+            >div {
+                width: 30%;
+                color: #ffffff;
+                text-decoration: none;
+                padding: 8px 0px;
+                margin-bottom: 30px;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+                border: 1px solid #fff;
+                font-size: 14px;
+                line-height: 1;
+                cursor: pointer;
+                user-select: none;
+                background: rgba(black,0.4);
+                border-radius: 4px;
+            }
+        }
+
+        .ctrlContainer {
+            display: flex;
+            justify-content: space-between;
+            font-size: 16px;
+            >div {
+                width: 146px;
+                height: 44px;
+                background: url(@/assets/button.png) no-repeat;
+                -webkit-background-size: 100% 100%;
+                background-size: 100% 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                user-select: none;
+                &.disabled{
+                    opacity: 0.4!important;
+                    pointer-events: none;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 639px) {
+    .join-module{
+        .title {
+            font-size: 30px;
+        }
+        .join{
+            padding: 80px 50px;
+            margin-right: auto;
+            margin-left: auto;
+            margin-bottom: 20px;
+            .inputCon{
+                font-size: 22px;
+                margin-bottom: 10px;
+            }
+            .btnGroup{
+                >div{
+                    margin-bottom: 10px;
+                    font-size: 10px;
+                }
+            }
+            .ctrlContainer{
+                >div{
+                    width: 118px;
+                    height: 36px;
+                    margin-bottom: 0px;
+                }
+            }
+        }
+    }
+}

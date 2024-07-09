@@ -1,0 +1,263 @@
+.share-main {
+  padding: 20px 15px 100px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  .share-logo {
+    text-align: center;
+    filter: brightness(200%);
+    img {
+      width: 160px;
+      margin: 20px 0;
+    }
+  }
+  .content-box {
+    width: calc(100% - 40px);
+    padding: 20px;
+    background: #242738;
+    border-radius: 6px;
+    text-align: center;
+    box-shadow: inset 0 0 0.05128rem 0.02564rem #2f334a;
+  }
+  .share-link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 0 20px;
+    p {
+      word-break: break-all;
+    }
+    .qrcode {
+      width: 180px;
+      height: 180px;
+      border-radius: 6px;
+      border: 1px solid #25eeb1;
+      padding: 10px;
+      img {
+        width: 180px;
+        height: 180px;
+      }
+    }
+    .share-btn {
+      width: 100%;
+      height: 40px;
+      background-color: #FFF;
+      color: #000;
+      line-height: 40px;
+      border-radius: 6px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+  }
+  .tab-menu {
+    border-radius: 40px;
+    font-size: 15px;
+  }
+  .node-head {
+    width: calc(100% - 40px);
+    padding: 20px;
+    background: #242738;
+    border-radius: 6px;
+    text-align: center;
+    box-shadow: inset 0 0 0.05128rem 0.02564rem #2f334a;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 0;
+    margin-bottom: 20px;
+    .node-head-item {
+      width: 33.33%;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      p {
+        &:nth-child(1) {
+          font-size: 12px;
+          color: rgba(255, 255, 255, 0.6);
+        }
+        &:nth-child(2) {
+          font-size: 15px;
+          color: #25eeb1;
+        }
+      }
+    }
+  }
+  .treeview {
+    color: rgba(255, 255, 255, .8);
+    /deep/.treeview-item-label {
+      font-size: 13px;
+    }
+  }
+  .node-list {
+    width: calc(100% - 40px);
+    padding: 20px;
+    background: #242738;
+    border-radius: 6px;
+    text-align: center;
+    box-shadow: inset 0 0 0.05128rem 0.02564rem #2f334a;
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      li {
+        display: flex;
+        flex-wrap: wrap;
+        text-align: left;
+        word-wrap: break-word;
+        word-break: break-all;
+        color: rgba(255, 255, 255, .6);
+        font-size: 13px;
+      }
+    }
+  }
+  .null-content {
+    background: url('../../../assets/images/null-icon.png') no-repeat center top;
+    background-size: 80px 80px;
+    padding-top: 80px;
+    text-align: center;
+    color: #FFF;
+    opacity: .8;
+    margin-top: 30px;
+  }
+  .income-box {
+    display: flex;
+    flex-direction: column;
+    .income-main {
+      height: 100px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 20px;
+      align-items: center;
+      position: relative;
+      padding-bottom: 20px;
+      &::after {
+        content: "";
+        position: absolute;
+        z-index: 1;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 0.02564rem;
+        background: linear-gradient(90deg,rgba(179,179,179,0) 0%,rgba(255,255,255,.6) 50.45%,rgba(179,179,179,0) 100%);
+      }
+      p {
+        &:nth-child(1) {
+          font-size: 14px;
+          color: #25eeb1;
+        }
+        &:nth-child(2) {
+          font-size: 26px;
+          color: #FFF;
+        }
+      }
+    }
+    .income-footer {
+      display: flex;
+      flex-wrap: wrap;
+      padding-top: 20px;
+      gap: 20px 0;
+      .income-footer-item {
+        width: 25%;
+        flex-grow: 1;
+        flex-shrink: 0;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 5px;
+        p {
+          &:nth-child(1) {
+            font-size: 12px;
+            color: rgba(255, 255, 255, .6);
+          }
+          &:nth-child(2) {
+            font-size: 12px;
+            color: #25eeb1;
+            display: flex;
+            gap: 4px;
+            align-items: center;
+          }
+        }
+      }
+    }
+  }
+  .income-list {
+    padding: 20px 0;
+    overflow: hidden;
+    .list-menu-select {
+      width: 100%;
+      height: 40px;
+      background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9CzEMAAAAtUlEQVR42u2VUQqCQBRF3y4FoUAoCooCoUAQnJ21gfl0PzdIbOhS+UbfT/HO53g9B0QYcRzHcX4SBPSICJIJOuV7uGGgzdK3GOinpxEjjVrfYCRqPlHiqtJfkAgieYl6cl0j0QmhSZy/Lk+sn5M4flwdWD83sX+72LF+SWIrBDasX5qoXp5UrLdIrJ+nK9ZbJcrHScn/vWWiQMF64wTrTRP2ek6w3j7BevtERETwa9lxHOfvuAOAC4GPzKVVpAAAAABJRU5ErkJggg==') no-repeat right center;
+      background-size: 18px 18px;
+    }
+    .income-list-header {
+      height: 40px;
+      line-height: 40px;
+      display: flex;
+      justify-content: space-between;
+      .header-list {
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        padding: 0 5px;
+        display: flex;
+        justify-content: space-between;
+        overflow-x: auto;
+        gap: 10px;
+        li {
+          white-space: nowrap;
+        }
+        .activeTab {
+          color: #25eeb1;
+        }
+      }
+    }
+    .income-list-main {
+      display: flex;
+      flex-direction: column;
+      .income-list-item {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        background: rgba(120, 120, 120, .1);
+        &:nth-child(2n) {
+          background: rgba(255, 255, 255, .1);
+        }
+        .income-list-item-info {
+          flex-grow: 1;
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+          p {
+            color: rgba(255, 255, 255, .8);
+            &:nth-child(2) {
+              font-size: 12px;
+            }
+          }
+        }
+        .income-list-item-money {
+          flex-shrink: 0;
+          width: 100px;
+          text-align: right;
+          color: #25eeb1;
+          font-size: 15px;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}
+.inactive-content {
+  padding-top: 180px;
+  background: url('../../../assets/images/inactive-icon.png') no-repeat center top;
+  background-size: 160px 160px;
+  text-align: center;
+  font-size: 16px;
+  margin-top: 100px;
+  color: #FFF;
+  opacity: .6;
+}
