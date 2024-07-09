@@ -36,7 +36,8 @@
     "vue-odometer": "^1.0.2",
     "vue-router": "^4.3.2",
     "vue3-tree-vue": "^2.0.10",
-    "vue3.0-clipboard": "^1.0.1"
+    "vue3.0-clipboard": "^1.0.1",
+    "web3": "1.8.1"
   },
   "devDependencies": {
     "@types/crypto-js": "^4.2.2",
