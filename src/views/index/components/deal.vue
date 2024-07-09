@@ -272,6 +272,7 @@ const transferUsdt = async (type: number, state: boolean) => {
           confirmButtonText: lang('我知道了！'),
         })
       } catch (err) {
+        loading = false;
         console.error(err);
       }
     } else {
