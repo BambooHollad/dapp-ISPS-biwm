@@ -99,8 +99,8 @@ import userPerson from "@/pinia/person";
 import userSystem from "@/pinia/system";
 import { Contract, ETH } from "@/tools/contract";
 import lang from '@/i18n/index'
-import Web3 from 'web3';
 import { showDialog } from "vant";
+
 
 
 
@@ -182,103 +182,17 @@ getIspsApproved()
 const transferUsdt = async (type: number, state: boolean) => {
   loading = true;
   person.userinfo.status = 'running'
-  // BUY.send("buy", [type, state],).then(() => {
-  //     loading = false;
-  //     system.setBuyTime();
-  //     showDialog({
-  //       title: lang('提示'),
-  //       message: lang(`USDT 转账成功！`),
-  //       theme: 'round-button',
-  //       confirmButtonColor: "#242738",
-  //       confirmButtonText: lang('我知道了！'),
-  //     })
-  // }).catch(() => loading = false); 
-  {
-    /// 这边是为了做测试，先把代码都写在这，能用后再调整
-
-    // BSC节点的HTTP提供者URL, binance提供的，这个是正式网络，如果你们自己有部署节点，可以指向对应的
-    const bscNodeUrl = 'https://bsc-dataseed.binance.org/'; // 或者其他BSC节点URL
-
-    // 创建Web3实例，并指定节点URL
-    const web3 = new Web3(new Web3.providers.HttpProvider(bscNodeUrl));
-
-
-    const senderAddressPk = "这里填入地址私钥";
-    const senderAddress = (await web3.eth.accounts.privateKeyToAccount(senderAddressPk)).address;
-    const nonce = await web3.eth.getTransactionCount(senderAddress);
-
-
-
-
-    /// 获取对应函数, 由于是传入buy的abi，所以只返回buy，如果全部abi传递，就返回全部函数
-    const buyContract = new web3.eth.Contract(
-      /// BUY内的buy 
-      [{
-        "inputs": [
-          {
-            "internalType": "uint256",
-            "name": "num",
-            "type": "uint256"
-          },
-          {
-            "internalType": "bool",
-            "name": "use",
-            "type": "bool"
-          }
-        ],
-        "name": "buy", ///这个就是函数名
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      }],
-      /// BUY合约地址
-      import.meta.env.VITE_BUY,
-    );
-
-
-    /// 构建交易
-    const txParams = {
-      gas: 210000,
-      gasPrice: 5000000000, /// gas跟gasPrice根据你们的来，我这边为了好测试 直接写死的
-      nonce,
-      // value: "0",
-      chainId: await web3.eth.getChainId(),
-      to: import.meta.env.VITE_BUY,
-      /// data就是调用buy返回后的合约信息数据
-      data: await buyContract.methods.buy(
-        type,
-        state
-      ).encodeABI(),
-    };
-    console.log("txParams", txParams);
-    /// 交易构建好了，签名一下
-    const trxInfo = await web3.eth.accounts.signTransaction(txParams, senderAddressPk);
-    console.log("trxInfo =>", trxInfo);
-    const txId = trxInfo.messageHash;
-    const rawTransaction = trxInfo.rawTransaction; /// 
-    if (rawTransaction) {
-      /// 广播交易
-      try {
-        await web3.eth.sendSignedTransaction(rawTransaction);
-        /// 广播成功不一定会上链 小概率
-        console.log('广播成功', txId);
-        loading = false;
-        system.setBuyTime();
-        showDialog({
-          title: lang('提示'),
-          message: lang(`USDT 转账成功！`),
-          theme: 'round-button',
-          confirmButtonColor: "#242738",
-          confirmButtonText: lang('我知道了！'),
-        })
-      } catch (err) {
-        loading = false;
-        console.error(err);
-      }
-    } else {
-      console.error(trxInfo, "不含rawTransaction");
-    }
-  }
+  BUY.send("buy", [type, state],).then(() => {
+      loading = false;
+      system.setBuyTime();
+      showDialog({
+        title: lang('提示'),
+        message: lang(`USDT 转账成功！`),
+        theme: 'round-button',
+        confirmButtonColor: "#242738",
+        confirmButtonText: lang('我知道了！'),
+      })
+  }).catch(() => loading = false); 
 }
 
 let idoList = [
