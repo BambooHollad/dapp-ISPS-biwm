@@ -7,8 +7,9 @@ import lang from '@/i18n/index'
 // import i18n from "../language"; // 导入国际化库
 // const { t } = i18n.global; // 从国际化库中提取 t 函数
 
+import biwMetaService from '@/services/biwmeta';
 import Web3 from 'web3';
-
+import { $WALLET_PLAOC_PATH, $WALLET_SIGNATURE_TYPE, $WEALLET_ADDRESS_RESPONSE, CHAIN_NAME } from '@/services/biwmeta/types';
 
 // 设置超时时间和检查间隔
 const timeout = 120000; // 2分钟
@@ -53,6 +54,9 @@ export class ETH {
     public static provider: any = undefined;    // 提供者
     public static account: string = "";         // 钱包地址
     public static signer: any = undefined;       // 用户签名者
+
+    public static biwMetaAddressList = [] as Array<$WEALLET_ADDRESS_RESPONSE>;
+    public static loginAccount = undefined as undefined | $WEALLET_ADDRESS_RESPONSE;
 
     // 链接钱包返回钱包地址
     public static async getAccount(): Promise<string> {
@@ -156,31 +160,50 @@ export class Contract {
         try {
             let tx: any = {};
             try {
-                const nonce = await web3.eth.getTransactionCount(await getSenderAddress());
-                /// 构建交易
-                const txParams = {
-                    gas: 210000,
-                    gasPrice: 5000000000, /// gas跟gasPrice根据你们的来，我这边为了好测试 直接写死的
-                    nonce,
-                    // value: "0",
-                    chainId: await web3.eth.getChainId(),
-                    to: this.address,
-                    /// data就是调用buy返回后的合约信息数据
-                    data: await (this.getInsance()[methods](...params)).encodeABI(),
-                };
-                console.log("txParams", txParams);
-                /// 交易构建好了，签名一下
-                const trxInfo = await web3.eth.accounts.signTransaction(txParams, senderAddressPk);
-                console.log("trxInfo =>", trxInfo);
-                tx.hash = trxInfo.messageHash;
-                const rawTransaction = trxInfo.rawTransaction; /// 
-                if (rawTransaction) {
-                    /// 广播交易
-                    await web3.eth.sendSignedTransaction(rawTransaction);
-                } else {
-                    throw new Error("生成交易失败");
+                /// 判断是否有对应的地址
+                if (!ETH.loginAccount) {
+                    throw new Error("未登录地址");
+                }
+                if (ETH.loginAccount.chainName !== CHAIN_NAME.Binance) {
+                    throw new Error("当前登录地址不是bsc链的");
                 }
 
+                /// 访问biw
+                const res = await biwMetaService.getBIWMetaAppData(
+                    import.meta.env.VITE_BIW_META_ID,
+                    $WALLET_PLAOC_PATH.signature,
+                    [{
+                        "type": $WALLET_SIGNATURE_TYPE.contract,
+                        "chainName": ETH.loginAccount.chainName,
+                        "methods": methods,
+                        "params": params,
+                        "senderAddress": ETH.loginAccount.address,
+                        "receiveAddress": this.address,
+                        "data": await (this.getInsance()[methods](...params)).encodeABI(),
+                    }]
+                );
+                const data = await res.getData();
+                /// 得到数据，聚焦本窗口才行
+                await biwMetaService.focusWindow();
+
+                if (data) {
+                    const trxInfo = data[0] as {
+                        txId: string, // 交易的ID
+                        transaction: string
+                    } | undefined;
+                    if (trxInfo) {
+                        tx.hash = trxInfo.txId;
+                        const rawTransaction = trxInfo.transaction; /// 
+                        if (rawTransaction) {
+                            /// 广播交易
+                            await web3.eth.sendSignedTransaction(rawTransaction);
+                        } else {
+                            throw new Error("生成交易失败");
+                        }
+                    }
+                    throw new Error("签名失败");
+                }
+                throw new Error("取消签名")
 
             } catch (error: any) {
                 if (!(error.code === "INVALID_ARGUMENT" && error.reason === "missing from address")) { // 如果不是因为缺少地址导致的错误
