@@ -82,31 +82,31 @@
   resolved "https://registry.npmmirror.com/@ctrl/tinycolor/-/tinycolor-3.6.1.tgz"
   integrity sha512-SITSV6aIXsuVNV3f3O0f2n/cgyEDWoSqtZMYiAmcsYHydcKrOz3gUxB/iXd/Qf08+IZX4KpgNbvUdMBmWz+kcA==
 
-"@dweb-browser/core@^0.1.3", "@dweb-browser/core@~0.1.3":
-  version "0.1.3"
-  resolved "https://registry.npmmirror.com/@dweb-browser/core/-/core-0.1.3.tgz"
-  integrity sha512-Ds52UQ/9WXHb9H9BWCw3mvv2UQUclZ/lvmLAU60slSiS2sFDZTjfWnSk5sJFmw89UwLubVUF2rxSQx1gxZRDxw==
+"@dweb-browser/core@^0.1.4", "@dweb-browser/core@~0.1.4":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@dweb-browser/core/-/core-0.1.4.tgz#480c7eaf0e5e4bfebcee3f12b1e03fc069d6676c"
+  integrity sha512-dw7MTGBFQe3Bxl9FctxrKjpxYtUzYVBHTcEz69FXfvIgpDrZGlMoL2Hv5Sz4L+/I+Kf0/PcfG8O1pZt8whiETQ==
   dependencies:
-    "@dweb-browser/helper" "~0.1.3"
+    "@dweb-browser/helper" "~0.1.4"
     cbor-x "^1.5.3"
 
-"@dweb-browser/helper@^0.1.3", "@dweb-browser/helper@~0.1.3":
-  version "0.1.3"
-  resolved "https://registry.npmmirror.com/@dweb-browser/helper/-/helper-0.1.3.tgz"
-  integrity sha512-uV1oqN04/VViFtTrqv7iHbWtrB64+9t7zuIYN1IKcypSHDMCA2GkdGtXsTwJDBIePz9yuQHPKxFWsLdwElWjQQ==
+"@dweb-browser/helper@^0.1.4", "@dweb-browser/helper@~0.1.4":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@dweb-browser/helper/-/helper-0.1.4.tgz#7173aa267dd23d4b073cfcd1a89e81d8ee51b5d1"
+  integrity sha512-Y75KI2g5YOLlYKohc+Zvt4TBWYQl8TQmpU+kkObgFonaOLz3Fr9ksuTy9LWFlfJZDC/VEYe8y8i3mQPe2ui+0w==
 
-"@dweb-browser/js-process@^0.4.6":
-  version "0.4.6"
-  resolved "https://registry.npmmirror.com/@dweb-browser/js-process/-/js-process-0.4.6.tgz"
-  integrity sha512-C/i7eNYqIlFwdpo3gR0rCtAvLDpW9sDppvndijj9EmotQx15tCNFMo/ICvkEUJ6eqr/5viaUOzHWgPmy+FDtqQ==
+"@dweb-browser/js-process@^0.4.7":
+  version "0.4.7"
+  resolved "https://registry.yarnpkg.com/@dweb-browser/js-process/-/js-process-0.4.7.tgz#f9a465b70200866c7e0082b2b231e58e14846353"
+  integrity sha512-XUBSPxcgpKjjEibIo1f7f5RWH4VqYW9M4RunUSVIsI64ENk4FjG7AjeD27FBikwbuku+rmTWzgH3wQyNDDnEyg==
   dependencies:
-    "@dweb-browser/core" "~0.1.3"
-    "@dweb-browser/helper" "~0.1.3"
+    "@dweb-browser/core" "~0.1.4"
+    "@dweb-browser/helper" "~0.1.4"
 
-"@dweb-browser/polyfill@^0.0.9":
-  version "0.0.9"
-  resolved "https://registry.npmmirror.com/@dweb-browser/polyfill/-/polyfill-0.0.9.tgz"
-  integrity sha512-1siZWAvzXMVZ5z6TmFPCSYXHTNTu5qmZv5UR0QSlujXuQr93I+BX6bhyu2FG4pCqqkoE3OAVlQ15D9Nj+beS4g==
+"@dweb-browser/polyfill@^0.0.8":
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/@dweb-browser/polyfill/-/polyfill-0.0.8.tgz#93794f217f2aa742e68c026cf4f7383b912f656e"
+  integrity sha512-OhjyCJiaOKFTmUoRBugn+bcmjZqKSek6WesB/2vASnPMTODpyqKLQ6uUguGuYb9mAC64lwi0P7eoCJmRyzQ6Jw==
 
 "@emotion/hash@^0.9.0":
   version "0.9.1"
@@ -537,15 +537,15 @@
   resolved "https://registry.npmmirror.com/@noble/hashes/-/hashes-1.4.0.tgz"
   integrity sha512-V1JJ1WTRUqHHrOSh597hURcMqVKVGL/ea3kv0gSnEdsEZ0/+VyPghM1lMNGc00z7CIQorSvbKpuJkxvuHbvdbg==
 
-"@plaoc/plugins@^1.0.6":
-  version "1.0.6"
-  resolved "https://registry.npmmirror.com/@plaoc/plugins/-/plugins-1.0.6.tgz"
-  integrity sha512-SsJpU/2omgOrNhXgxAmdRcsUV+hCTKCPn1751+R8yUObTGc6kPIIyg/esSx0HPivYFwst0MjQJgFe7Wu8Oc/4Q==
+"@plaoc/plugins@^1.0.9":
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/@plaoc/plugins/-/plugins-1.0.9.tgz#542206ae1b2be353d903b904322f006f21b05747"
+  integrity sha512-0YLGB8g/7O93GOs3Nyft1pcrqTdjeJ8oWaEGcvhNl8a/fD2/W8J3iYbPvINg7qUAiSRTV5QW0MSK/UDAWsNaag==
   dependencies:
-    "@dweb-browser/core" "^0.1.3"
-    "@dweb-browser/helper" "^0.1.3"
-    "@dweb-browser/js-process" "^0.4.6"
-    "@dweb-browser/polyfill" "^0.0.9"
+    "@dweb-browser/core" "^0.1.4"
+    "@dweb-browser/helper" "^0.1.4"
+    "@dweb-browser/js-process" "^0.4.7"
+    "@dweb-browser/polyfill" "^0.0.8"
     cbor-x "^1.5.9"
 
 "@scure/base@~1.1.6":

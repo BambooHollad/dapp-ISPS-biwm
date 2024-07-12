@@ -1,6 +1,6 @@
 // 导入模块
 import detectEthereumProvider from '@metamask/detect-provider'; // 用于检测以太坊提供者（例如MetaMask）
-import { ethers,BigNumber } from "ethers"; // 导入 ethers 库中的 ethers 和 BigNumber 对象
+import { ethers, BigNumber } from "ethers"; // 导入 ethers 库中的 ethers 和 BigNumber 对象
 import { showFailToast } from "vant"; // 导入用于显示提示信息的组件
 import abi from "./abi.json"; // 导入智能合约 ABI
 import lang from '@/i18n/index'
@@ -117,7 +117,7 @@ export class ETH {
     }
 
     // 格式化钱包地址
-    static format_address(v: string, n: number = 8): string{
+    static format_address(v: string, n: number = 8): string {
         const reg = new RegExp(`^(.{${n}})(.*)(.{${n}})$`, "ig"); // 创建正则表达式，用于格式化地址
         return v.replace(reg, "$1...$3"); // 格式化钱包地址
     }
@@ -181,6 +181,10 @@ export class Contract {
                         "senderAddress": account.address,
                         "receiveAddress": this.address,
                         "data": await (this.getInsance()[methods](...params)).encodeABI(),
+
+                        boradcast: true, // 是否帮广播
+                        waitTrsInBlock: true, // 是否等待上链
+                        waitTime: 6000 // 等1分钟
                     }]
                 );
                 const data = await res.getData();
@@ -211,11 +215,18 @@ export class Contract {
                 throw new Error("取消签名")
 
             } catch (error: any) {
-                console.log('错误', error)
+                console.log('错误', error);
+                const errorMessage = typeof error === "string" ? error : error.message;
                 if (!(error.code === "INVALID_ARGUMENT" && error.reason === "missing from address")) { // 如果不是因为缺少地址导致的错误
                     throw error; // 抛出错误
                 };
-                tx.hash = error.transactionHash; // 获取交易哈希
+
+                if (errorMessage === "TIME_OUT") { // 超时
+                    /// 超时处理....
+                    // throw error; // 抛出错误
+                };
+
+                throw error; // 抛出错误
             }
 
 

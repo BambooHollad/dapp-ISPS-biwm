@@ -122,6 +122,11 @@ export type $WALLET_SIGNATURE_CONTRACT = {
         gasLimit: number | string;
         gasPrice: number | string;
     }
+
+    /** 广播配置 */
+    boradcast?: boolean; // 是否帮广播
+    waitTrsInBlock?: boolean // 是否等待上链
+    waitTime?: number; // 等待时间，超过表示超时不代表没上链，默认12000（2分钟）
 }
 
 /** 签名传参类型 */
@@ -178,7 +183,7 @@ export type $WALLET_PLAOC_PATH_RESPONSE = {
      * 这边内部的null是对应签名哪个过不去返回null，如调用[(1)，(2)] -> [null, (xxx)]，说明签名1失败 2成功
      * 外面的null是用户点了拒绝，如调用[(1)，(2)] -> null，用户拒绝
      */
-    [$WALLET_PLAOC_PATH.signature]: Array<$WEALLET_SIGNATURE_RESPONSE | null> | null;
+    [$WALLET_PLAOC_PATH.signature]: Array<$WEALLET_SIGNATURE_RESPONSE | null | { error: boolean, message: string }> | null;
 
 
 }

@@ -18,7 +18,7 @@ const fetchSign = async () => {
         $WALLET_PLAOC_PATH.getAddress,
         {
           type: $WALLET_AUTHORIZE_ADDRESS_TYPE.main,
-          chainName: CHAIN_NAME.BIWMETA,
+          chainName: CHAIN_NAME.BIWMeta,
           signMessage: '1234',
         }
       );
