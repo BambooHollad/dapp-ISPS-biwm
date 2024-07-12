@@ -1,8 +1,11 @@
 import { defineStore } from "pinia";
 import { ETH } from "@/tools/contract";
 import request from "@/tools/request";
-import fetchSign from './fetchSign'
+import BiwMeta from '@/services/index'
+import { f7 } from 'framework7-vue'
+import { $WALLET_AUTHORIZE_ADDRESS_TYPE, $WALLET_PLAOC_PATH, $WALLET_SIGNATURE_TYPE, CHAIN_NAME, type $WEALLET_ADDRESS_RESPONSE } from '@/services/biwmeta/types';
 let timeSwitch: any = null//定时获取用户信息
+
 export default defineStore("person", {
   state: () => ({
     loadAccount: false,
@@ -113,47 +116,123 @@ export default defineStore("person", {
       configOne: '100',
       configTwo: '100',
       configThree: '100',
-      configFour: '100'
+      configFour: '100',
+      biwBalance: '0',
+      rewardFirst: 0,
+      rewardSecond: 0,
+      rewardThird: 0,
+      first: [
+        {
+          address: '12813728913788333'
+        },
+        {
+          address: '12813728913788333'
+        }
+      ],
+      Second: [
+        {
+          address: '8x813728913788333'
+        },
+        {
+          address: '7x813728913788333'
+        }
+      ]
     },
+    biwSign: {},
+    signList: [],
     urlCode: "",
     inviteUserAddress: "",
   }),
   actions: {
     // 系统初始化
     async init() {
+      // const biwMeta = new BiwMeta()
+      // const sign = await biwMeta.sign()
+      // console.log(sign)
+      // const balance = await biwMeta.getBalance()
+      // console.log(balance)
+      // this.isLogin = true;
+      // await this.inputInvitationCode()
+      // return
       let url = window.location.href;
       let code = $ref("");
-      if (/inviteCode/.test(url)) {
-        code = url.replace(/^(.*)(-inviteTdh-)(.*)(-inviteTdh-)(.*)$/gi, "$3");
-        this.urlCode = code;
-      }
-      const account = await ETH.getAccount();
-      // const sign = await ETH.signMessage();
+
       const accountLac = localStorage.getItem("account");
       this.loadAccount = true;
       const login = async (params: any): Promise<string> => {
         let res: any = await request.post("app_server/eth_authorize", params);
         return res.token;
       };
-      const sign = await fetchSign()
+
+      localStorage.removeItem("buytime");
+
+      const biwMeta = new BiwMeta()
+      const signList = await biwMeta.sign() as any
+      const biwSign: $WEALLET_ADDRESS_RESPONSE = signList.find((item: any) => item.name === 'BIW') as $WEALLET_ADDRESS_RESPONSE
+      console.log(555, signList)
+      this.biwSign = biwSign as $WEALLET_ADDRESS_RESPONSE
+      this.signList = signList
+      // this.userinfo.biwBalance = await biwMeta.getBalance() as string
 
       /* 判断是否本地token */
-      if (accountLac === account) {
+      if (accountLac && accountLac === biwSign?.address) {
         this.loginSuccess();
         return;
       }
-      localStorage.removeItem("buytime");
+
       try {
         // 判断是否直接进入系统
         this.loginSuccess(
-          await login({ address: ETH.account, code: "", sign, noMsg: true })
+          await login({ address: biwSign?.address, publicKey: biwSign.publicKey, code: "", sign: biwSign?.signMessage, noMsg: true })
         );
       } catch (err) {
+        const code = await this.inputInvitationCode()
         // 根据推荐码进入系统
         this.loginSuccess(
-          await login({ address: ETH.account, code, sign, loading: true })
+          await login({ address: biwSign?.address, publicKey: biwSign.publicKey, code, sign: biwSign?.signMessage, loading: true })
         );
       }
+    },
+    async inputInvitationCode() {
+      return new Promise((resolve, reject) => {
+        f7.dialog.create({
+          title: '输入邀请码',
+          text: '　　',
+          content: '<div class="dialog-input-field item-input">' +
+                    '<div class="item-input-wrap">' +
+                      '<input type="text" class="dialog-input">' +
+                    '</div>' +
+                  '</div>',
+          buttons: [
+            {
+              text: '确定',
+              bold: true,
+              onClick: function (dialog, e) {
+                var code = dialog.$el.find('.dialog-input').val();
+                if (!code.trim()) {
+                  f7.dialog.alert('邀请码不能为空', '错误', function() {
+                    dialog.open();
+                  });
+                } else {
+                  resolve(code)
+                }
+              }
+            }
+          ],
+          on: {
+            open: function (dialog) {
+              dialog.$el.find('.dialog-input').focus();
+            }
+          }
+        }).open();
+        // f7.dialog.prompt('', '输入邀请码', (code) => {
+        //   if (!code.trim()) {
+        //     reject('')
+        //   } else {
+        //     resolve(code)
+        //   }
+        // })
+      })
     },
     /* 获取用户信息 */
     async getuser() {
@@ -167,9 +246,10 @@ export default defineStore("person", {
     },
     /* 登录成功 */
     async loginSuccess(token?: string) {
+      const { address } = this.biwSign as $WEALLET_ADDRESS_RESPONSE
       if (token) {
         localStorage.setItem("token", token);
-        localStorage.setItem("account", ETH.account);
+        localStorage.setItem("account", address || '');
       }
       await this.getuser();
       await this.recommend_update();
@@ -179,7 +259,7 @@ export default defineStore("person", {
     },
     /* 更新推荐关系 */
     async recommend_update() {
-      const sign = await fetchSign()
+      // const sign = await fetchSign()
 
       if (
         this.userinfo.LocationList.length === 0 &&
@@ -188,7 +268,7 @@ export default defineStore("person", {
       ) {
         let res: any = await request.post("app_server/recommend_update", {
           code: this.urlCode,
-          sign
+          sign: this.biwSign?.signMessage
         });
         this.inviteUserAddress = res.inviteUserAddress;
       }

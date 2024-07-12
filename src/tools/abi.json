@@ -315,6 +315,78 @@
             "type": "error"
         },
         {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "num",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "string",
+                    "name": "strAddress",
+                    "type": "string"
+                }
+            ],
+            "name": "buyBak",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "bytes32",
+                    "name": "role",
+                    "type": "bytes32"
+                },
+                {
+                    "internalType": "address",
+                    "name": "account",
+                    "type": "address"
+                }
+            ],
+            "name": "grantRole",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "bytes32",
+                    "name": "role",
+                    "type": "bytes32"
+                },
+                {
+                    "internalType": "address",
+                    "name": "callerConfirmation",
+                    "type": "address"
+                }
+            ],
+            "name": "renounceRole",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "bytes32",
+                    "name": "role",
+                    "type": "bytes32"
+                },
+                {
+                    "internalType": "address",
+                    "name": "account",
+                    "type": "address"
+                }
+            ],
+            "name": "revokeRole",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
             "anonymous": false,
             "inputs": [
                 {
@@ -390,6 +462,32 @@
             "type": "event"
         },
         {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "address1_",
+                    "type": "address"
+                }
+            ],
+            "name": "setAddress1",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "address2_",
+                    "type": "address"
+                }
+            ],
+            "name": "setAddress2",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
             "inputs": [],
             "name": "DEFAULT_ADMIN_ROLE",
             "outputs": [
@@ -397,50 +495,6 @@
                     "internalType": "bytes32",
                     "name": "",
                     "type": "bytes32"
-                }
-            ],
-            "stateMutability": "view",
-            "type": "function"
-        },
-        {
-            "inputs": [],
-            "name": "account",
-            "outputs": [
-                {
-                    "internalType": "address",
-                    "name": "",
-                    "type": "address"
-                }
-            ],
-            "stateMutability": "view",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "uint256",
-                    "name": "num",
-                    "type": "uint256"
-                },
-                {
-                    "internalType": "bool",
-                    "name": "use",
-                    "type": "bool"
-                }
-            ],
-            "name": "buy",
-            "outputs": [],
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "inputs": [],
-            "name": "coin",
-            "outputs": [
-                {
-                    "internalType": "address",
-                    "name": "",
-                    "type": "address"
                 }
             ],
             "stateMutability": "view",
@@ -483,9 +537,9 @@
             "name": "getUsers",
             "outputs": [
                 {
-                    "internalType": "address[]",
+                    "internalType": "string[]",
                     "name": "",
-                    "type": "address[]"
+                    "type": "string[]"
                 }
             ],
             "stateMutability": "view",
@@ -531,30 +585,12 @@
             "name": "getUsersByIndex",
             "outputs": [
                 {
-                    "internalType": "address[]",
+                    "internalType": "string[]",
                     "name": "",
-                    "type": "address[]"
+                    "type": "string[]"
                 }
             ],
             "stateMutability": "view",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "bytes32",
-                    "name": "role",
-                    "type": "bytes32"
-                },
-                {
-                    "internalType": "address",
-                    "name": "account",
-                    "type": "address"
-                }
-            ],
-            "name": "grantRole",
-            "outputs": [],
-            "stateMutability": "nonpayable",
             "type": "function"
         },
         {
@@ -579,74 +615,6 @@
                 }
             ],
             "stateMutability": "view",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "uint256",
-                    "name": "",
-                    "type": "uint256"
-                }
-            ],
-            "name": "path",
-            "outputs": [
-                {
-                    "internalType": "address",
-                    "name": "",
-                    "type": "address"
-                }
-            ],
-            "stateMutability": "view",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "bytes32",
-                    "name": "role",
-                    "type": "bytes32"
-                },
-                {
-                    "internalType": "address",
-                    "name": "callerConfirmation",
-                    "type": "address"
-                }
-            ],
-            "name": "renounceRole",
-            "outputs": [],
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "bytes32",
-                    "name": "role",
-                    "type": "bytes32"
-                },
-                {
-                    "internalType": "address",
-                    "name": "account",
-                    "type": "address"
-                }
-            ],
-            "name": "revokeRole",
-            "outputs": [],
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "address",
-                    "name": "account_",
-                    "type": "address"
-                }
-            ],
-            "name": "setAccount",
-            "outputs": [],
-            "stateMutability": "nonpayable",
             "type": "function"
         },
         {
@@ -692,9 +660,9 @@
             "name": "users",
             "outputs": [
                 {
-                    "internalType": "address",
+                    "internalType": "string",
                     "name": "",
-                    "type": "address"
+                    "type": "string"
                 }
             ],
             "stateMutability": "view",

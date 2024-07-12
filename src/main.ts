@@ -13,6 +13,8 @@ import pinia from './pinia'
 import App from './App.vue';
 import Antd from 'ant-design-vue';
 import regComponents from "./components/index";
+// import { windowPlugin } from "@plaoc/plugins";
+
 const app = createApp(App);
 app.use(i18n);
 app.use(pinia);
@@ -21,3 +23,5 @@ registerComponents(app);
 regComponents(app);
 directive(app);
 app.use(Antd).mount('#app')
+
+// await windowPlugin.setBounds(false, 300, 400);

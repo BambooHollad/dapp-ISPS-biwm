@@ -27,12 +27,7 @@
   "5omL57ut6LS5": "Fee",
   "5YWR5o2i5oiQ5Yqf": "Exchange Success",
   "562+5ZCN5aSx6LSl": "Signature Failure",
-  "5pe26Ze0": "Time",
-  "5Luj5biB": "Token",
-  "5Lu35qC8": "Price",
   "5YWo55CD5YmN5Zub5ZCN5aWW5Yqx": "Global Top Four Reward",
-  "5pel6ZSA5ZSu5YmN5Zub": "Daily Top Four",
-  "5pel5rKJ5reA5oC75pWw": "Daily Total",
   "5o6S5ZCN": "Rank",
   "5YiG5Lqr6IqC54K5": "Share Node",
   "5aWW5Yqx": "Reward",
@@ -108,5 +103,7 @@
   "5o+Q546w6YeR6aKd": "Withdrawal amount",
   "6K+36L6T5YWl6YeR6aKd": "Please enter the amount",
   "5o+Q546w5oiQ5Yqf": "Withdrawal successful",
-  "55u05o6o": "Directly recommend"
+  "55u05o6o": "Directly recommend",
+  "5LuK5pel6K6k6LSt5Yid57qn6IqC54K5": "今日认购初级节点",
+  "5LuK5pel6K6k6LSt6LaF57qn6IqC54K5": "今日认购超级节点"
 }

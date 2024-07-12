@@ -10,7 +10,7 @@
           <div class="exchange-form-item">
             <div class="exchange-form-info">
               <span>{{isConvert ? lang('输出') : lang('输入')}}</span>
-              <span>ISPS</span>
+              <span>BIW</span>
             </div>
             <div class="exchange-form-input">
               <input class="form-input" type="number" @input="checkMax" v-model="isps" placeholder="0.00" />
@@ -31,7 +31,7 @@
       </div>
       <ul class="exchange-rate">
         <li>
-          <span>ISPS</span>
+          <span>BIW</span>
           <span>{{userinfo.balanceBiw}}</span>
         </li>
         <li>

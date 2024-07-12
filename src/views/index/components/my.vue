@@ -7,13 +7,13 @@
           <p>${{userinfo.locationCurrentSub || 0}}</p>
         </div>
         <div class="income-footer">
-          <div class="income-footer-item">
+          <!-- <div class="income-footer-item">
             <p>0</p>
             <p>KEY</p>
-          </div>
+          </div> -->
           <div class="income-footer-item">
             <p>0</p>
-            <p>ISPS</p>
+            <p>BIW</p>
           </div>
           <div class="income-footer-item">
             <p>0</p>
@@ -24,10 +24,10 @@
     </div>
     <div class="content-box">
       <div class="invite-box">
-        <div class="income-box-item" @click="f7router.navigate('/link')">
+        <!-- <div class="income-box-item" @click="f7router.navigate('/link')">
           <span class="link">{{lang('邀请链接')}}</span>
           <i class="right-arrow-icon"></i>
-        </div>
+        </div> -->
         <div class="income-box-item" @click="f7router.navigate('/count')">
           <span class="count">{{lang('邀请数量')}}</span>
           <i class="right-arrow-icon"></i>
@@ -56,7 +56,7 @@
           <div class="asset-list-item">
             <div class="asset-list-item-left">
               <div class="asset-list-item-cover icon-isps"></div>
-              <span>ISPS</span>
+              <span>BIW</span>
             </div>
             <div class="asset-list-item-amount">
               <span>{{ formatNumber(tabMenu === 1 ? isps : userinfo.balanceBiw) }}</span>
@@ -67,6 +67,26 @@
             <div class="asset-list-item-left">
               <div class="asset-list-item-cover ustd-cover"></div>
               <span>USDT</span>
+            </div>
+            <div class="asset-list-item-amount">
+              <span>{{ formatNumber(tabMenu === 1 ? usdt : userinfo.balanceUsdt) }}</span>
+              <!-- <span>0 USDT</span> -->
+            </div>
+          </div>
+          <div class="asset-list-item">
+            <div class="asset-list-item-left">
+              <div class="asset-list-item-cover icon-isps"></div>
+              <span>UUKD</span>
+            </div>
+            <div class="asset-list-item-amount">
+              <span>{{ formatNumber(tabMenu === 1 ? usdt : userinfo.balanceUsdt) }}</span>
+              <!-- <span>0 USDT</span> -->
+            </div>
+          </div>
+          <div class="asset-list-item">
+            <div class="asset-list-item-left">
+              <div class="asset-list-item-cover icon-isps"></div>
+              <span>KKDT</span>
             </div>
             <div class="asset-list-item-amount">
               <span>{{ formatNumber(tabMenu === 1 ? usdt : userinfo.balanceUsdt) }}</span>

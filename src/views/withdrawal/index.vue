@@ -3,12 +3,12 @@
     <ChildrenHeader />
     <div class="withdrawal-main">
       <div class="content-box">
-        <div class="content-box-title">{{lang('提现金额')}}<span>USTD</span></div>
+        <div class="content-box-title">{{lang('提现金额')}}<span>BIW</span></div>
         <div class="content-box-content">
           <input class="form-input" v-model="amount" @input="checkMax" type="number" :placeholder="lang('请输入金额')" />
           <div class="form-sidebar">
           <f7-button class="all-amount-btn" outline round @click="handleAllAmount()">{{lang('全部')}}</f7-button>
-            <div class="form-balance">{{lang('余额')}}: {{ userinfo.balanceUsdt }}</div>
+            <div class="form-balance">{{lang('余额')}}: {{ userinfo.balanceBiw }}</div>
           </div>
         </div>
       </div>
@@ -18,11 +18,12 @@
 </template>
 <script setup lang="ts">
 import ChildrenHeader from '../../components/header/childrenHeader.vue'
-import fetchSign from '../../pinia/fetchSign'
 import userPerson from "@/pinia/person";
 import request from "@/tools/request";
 import lang from '@/i18n/index'
 import { f7 } from 'framework7-vue'
+import BiwMeta from '@/services/index'
+import { $WALLET_AUTHORIZE_ADDRESS_TYPE, $WALLET_PLAOC_PATH, $WALLET_SIGNATURE_TYPE, CHAIN_NAME, type $WEALLET_ADDRESS_RESPONSE } from '@/services/biwmeta/types';
 const person = userPerson();
 const userinfo = $computed(() => person.userinfo);
 
@@ -37,6 +38,7 @@ const handleAllAmount = () => {
 const checkMax = (e: any) => {
   const currentNum = Number(e.target.value)
   const maxNum = Number(userinfo.balanceUsdt)
+  // const maxNum = Number(100)
 
   if (currentNum > maxNum) {
     amount = maxNum
@@ -47,13 +49,16 @@ const handleWithdrawal = async() => {
   if (loading) return
   loading = true
 
+  const biwMeta = new BiwMeta()
+  const signList = await biwMeta.sign() as any
+  const biwSign: $WEALLET_ADDRESS_RESPONSE = signList.find((item: any) => item.name === 'BIW') as $WEALLET_ADDRESS_RESPONSE
+
   try {
-    const sign = await fetchSign();
 
     const res: { code: number } = await request.post("app_server/withdraw", {
       amount: String(amount),
-      type: '2',
-      sign
+      sign: biwSign?.signMessage,
+      publicKey: biwSign.publicKey
     });
 
     loading = false

@@ -1,6 +1,9 @@
 /* 此文件为项目全局样式 */
 :root {
     --f7-theme-color: @c1;
+    --f7-dialog-button-text-color: #000;
+    --f7-dialog-button-text-align: center;
+    --f7-dialog-bg-color-rgb: rgba(255, 255, 255, 1);
 }
 
 body {
@@ -34,7 +37,7 @@ body {
 //     transform: translate3d(-100%, 0, 0)!important;
 // }
 .icon-isps {
-    background: url('../assets/images/isps-logo.png') no-repeat;
+    background: url('../assets/images/biw-logo.jpg') no-repeat;
     background-size: 100% 100%;
 }
 
@@ -58,4 +61,10 @@ body {
     .picker-item-selected {
         color: rgba(255, 255, 255, 1);
     }
+}
+
+.ios-translucent-modals .dialog {
+    background-color: rgba(255, 255, 255, .9);
+    border-radius: 4px;
+    backdrop-filter: inherit;
 }

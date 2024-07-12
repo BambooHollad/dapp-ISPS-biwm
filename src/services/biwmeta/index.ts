@@ -20,7 +20,7 @@ const restart = () => dwebServiceWorker.restart();
 const getBIWMetaAppData = <
     T extends keyof $WALLET_PLAOC_PATH_RESPONSE,
     U extends $WALLET_PLAOC_PATH_REQUEST_PARAMETER[T],
->(id: `${string}.dweb`, pathname: T, search?: U) => {
+>(id: `${string}.dweb`, pathname: T, search?: any) => {
     let signaturedata = '';
     const url = new URL(pathname, `file://${id}`);
     if (search) {
@@ -28,7 +28,6 @@ const getBIWMetaAppData = <
             signaturedata = JSON.stringify(search);
         } else {
             for (const key in search) {
-                // @ts-ignore
                 url.searchParams.set(key, search[key]);
             }
         }

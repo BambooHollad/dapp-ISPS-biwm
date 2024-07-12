@@ -1,0 +1,53 @@
+{
+  "id": "biw.dweb",
+  "server": {
+    "root": "/usr",
+    "entry": "/server/plaoc.server.js"
+  },
+  "minTarget": 3,
+  "maxTarget": 3,
+  "name": "BIW矿卡算力",
+  "short_name": "BIW矿卡算力",
+  "description": "应用简介\n换行简介",
+  "logo": "https://www.nowplaysnew.com/1b4a6958587e747a32dfbbb604a597f.jpg",
+  "bundle_url": "./biw.dweb-.zip",
+  "bundle_hash": "sha256:2aac33d785fae7ecdcb96324e076c63536978b0c93505b2dd53eb8266eae1a35",
+  "bundle_size": 4727170,
+  "bundle_signature": "",
+  "public_key_url": "",
+  "release_date": "Thu Jul 11 2024 23:13:28 GMT+0800 (中国标准时间)",
+  "change_log": "1.这里显示版本更新内融\n2.换行显示内容",
+  "images": [
+    "https://应用的展示内容截图链接",
+    "https://应用的展示内容截图链接",
+    "https://应用的展示内容截图链接",
+    "https://应用的展示内容截图链接"
+  ],
+  "author": [
+    "@demo.demo"
+  ],
+  "version": "",
+  "categories": [
+    "application"
+  ],
+  "languages": [
+    "中文"
+  ],
+  "homepage_url": "https://www.demo.demo",
+  "plugins": [],
+  "permissions": [],
+  "dir": "ltr",
+  "lang": "",
+  "icons": [
+    {
+      "src": "https://www.nowplaysnew.com/logo.ico"
+    }
+  ],
+  "screenshots": [],
+  "display": "fullscreen",
+  "orientation": "any",
+  "theme_color": "",
+  "background_color": "",
+  "shortcuts": [],
+  "home": "https://www.demo.demo"
+}

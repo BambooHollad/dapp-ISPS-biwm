@@ -1,12 +1,11 @@
 // 导入模块
 import detectEthereumProvider from '@metamask/detect-provider'; // 用于检测以太坊提供者（例如MetaMask）
-import { ethers, BigNumber } from "ethers"; // 导入 ethers 库中的 ethers 和 BigNumber 对象
+import { ethers,BigNumber } from "ethers"; // 导入 ethers 库中的 ethers 和 BigNumber 对象
 import { showFailToast } from "vant"; // 导入用于显示提示信息的组件
 import abi from "./abi.json"; // 导入智能合约 ABI
 import lang from '@/i18n/index'
 // import i18n from "../language"; // 导入国际化库
 // const { t } = i18n.global; // 从国际化库中提取 t 函数
-
 import biwMetaService from '@/services/biwmeta';
 import Web3 from 'web3';
 import { $WALLET_PLAOC_PATH, $WALLET_SIGNATURE_TYPE, $WEALLET_ADDRESS_RESPONSE, CHAIN_NAME } from '@/services/biwmeta/types';
@@ -30,25 +29,19 @@ async function waitForTransaction(hash: string) {
     return receipt;
 }
 
+const web3 = new Web3('https://bsc-dataseed.binance.org/');
+// const senderAddressPk = '';/// 确保跟你下面（链接钱包类）授权地址是同一个
+// let _senderAddress = '';
 
+// const getSenderAddress = async () => {
+//     if (_senderAddress) {
+//         return _senderAddress;
+//     }
+//     return _senderAddress = (await web3.eth.accounts.privateKeyToAccount(senderAddressPk)).address;
+// }
 
-const web3 = new Web3(new Web3.providers.HttpProvider(import.meta.env.VITE_bscNodeUrl));
-const senderAddressPk = "这里填入授权钱包地址的私钥";/// 确保跟你下面（链接钱包类）授权地址是同一个
+// console.log("解析地址 =》 ", await getSenderAddress());
 let _senderAddress = '';
-
-const getSenderAddress = async () => {
-    if (_senderAddress) {
-        return _senderAddress;
-    }
-    return _senderAddress = (await web3.eth.accounts.privateKeyToAccount(senderAddressPk)).address;
-}
-console.log("解析地址 =》 ", await getSenderAddress());
-
-const usdtAbi = [
-    "function balanceOf(address owner) view returns (uint256)",
-];
-
-
 /* 链接钱包类 */
 export class ETH {
     public static provider: any = undefined;    // 提供者
@@ -57,7 +50,6 @@ export class ETH {
 
     public static biwMetaAddressList = [] as Array<$WEALLET_ADDRESS_RESPONSE>;
     public static loginAccount = undefined as undefined | $WEALLET_ADDRESS_RESPONSE;
-
     // 链接钱包返回钱包地址
     public static async getAccount(): Promise<string> {
         const ethereum: any = await detectEthereumProvider(); // 检测以太坊提供者
@@ -125,11 +117,18 @@ export class ETH {
     }
 
     // 格式化钱包地址
-    static format_address(v: string, n: number = 8): string {
+    static format_address(v: string, n: number = 8): string{
         const reg = new RegExp(`^(.{${n}})(.*)(.{${n}})$`, "ig"); // 创建正则表达式，用于格式化地址
         return v.replace(reg, "$1...$3"); // 格式化钱包地址
     }
 }
+const getSenderAddress = async () => {
+    if (_senderAddress) {
+        return _senderAddress;
+    }
+    return _senderAddress = (await web3.eth.accounts.privateKeyToAccount(senderAddressPk)).address;
+}
+
 /* 合约类 */
 export class Contract {
     public address!: string;    // 合约地址
@@ -142,11 +141,13 @@ export class Contract {
 
     // 获取合约实例
     getInsance() {
+        console.log(444, this.abiName, this.address)
         /// 这里拿合约函数
         const contract = new web3.eth.Contract(
             (abi as any)[this.abiName],
             this.address,
         );
+        console.log(555, contract.methods)
         return contract.methods;
     }
 
@@ -155,16 +156,16 @@ export class Contract {
         return await this.getInsance()[methods](...params).call(); // 调用合约方法
     }
 
-    // 发送交易至合约
-    async send(methods: string, params: any[] = []): Promise<void> {
+    async send(methods: string, account: $WEALLET_ADDRESS_RESPONSE, params: any[] = []): Promise<void> {
         try {
+            console.log(methods, params)
             let tx: any = {};
             try {
                 /// 判断是否有对应的地址
-                if (!ETH.loginAccount) {
+                if (!account) {
                     throw new Error("未登录地址");
                 }
-                if (ETH.loginAccount.chainName !== CHAIN_NAME.Binance) {
+                if (account.chainName !== CHAIN_NAME.Binance) {
                     throw new Error("当前登录地址不是bsc链的");
                 }
 
@@ -174,10 +175,10 @@ export class Contract {
                     $WALLET_PLAOC_PATH.signature,
                     [{
                         "type": $WALLET_SIGNATURE_TYPE.contract,
-                        "chainName": ETH.loginAccount.chainName,
+                        "chainName": account.chainName,
                         "methods": methods,
                         "params": params,
-                        "senderAddress": ETH.loginAccount.address,
+                        "senderAddress": account.address,
                         "receiveAddress": this.address,
                         "data": await (this.getInsance()[methods](...params)).encodeABI(),
                     }]
@@ -186,15 +187,19 @@ export class Contract {
                 /// 得到数据，聚焦本窗口才行
                 await biwMetaService.focusWindow();
 
+                console.log(7777, data)
                 if (data) {
+                    console.log(8888)
                     const trxInfo = data[0] as {
                         txId: string, // 交易的ID
                         transaction: string
                     } | undefined;
+                    console.log(9999, trxInfo)
                     if (trxInfo) {
                         tx.hash = trxInfo.txId;
-                        const rawTransaction = trxInfo.transaction; /// 
+                        const rawTransaction = trxInfo.transaction; ///
                         if (rawTransaction) {
+                            console.log('0000', rawTransaction)
                             /// 广播交易
                             await web3.eth.sendSignedTransaction(rawTransaction);
                         } else {
@@ -206,6 +211,7 @@ export class Contract {
                 throw new Error("取消签名")
 
             } catch (error: any) {
+                console.log('错误', error)
                 if (!(error.code === "INVALID_ARGUMENT" && error.reason === "missing from address")) { // 如果不是因为缺少地址导致的错误
                     throw error; // 抛出错误
                 };

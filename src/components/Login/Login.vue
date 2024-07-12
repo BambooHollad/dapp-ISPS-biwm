@@ -13,7 +13,6 @@
 <script setup lang="ts">
 import userPerson from "@/pinia/person";
 import lang from '@/i18n/index'
-
 const person = userPerson();
 </script>
 <style scoped lang="less">

@@ -80,11 +80,26 @@
   .sidebar-logo {
     height: 100px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    gap: 10px;
     border-bottom: 1px solid #666;
     img {
-      height: 30px;
+      height: 22px;
+    }
+    .address-text {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      .copy-address-button {
+        width: 50px;
+        border-radius: 4px;
+        background: rgba(125, 125, 125, 5);
+        border: 1px solid rgba(255, 255, 255, .1);
+        color: #EEE;
+        font-size: 12px;
+      }
     }
   }
   .sidebar-menu {

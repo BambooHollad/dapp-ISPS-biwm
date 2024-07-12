@@ -1,0 +1,31 @@
+{
+    "id": "biw.dweb",
+    "name": "BIW矿卡算力",
+    "short_name": "BIW矿卡算力",
+    "description": "应用简介\n换行简介",
+    "logo": "https://www.nowplaysnew.com/1b4a6958587e747a32dfbbb604a597f.jpg",
+    "icons": [
+        {
+            "src": "https://www.nowplaysnew.com/logo.ico"
+        }
+    ],
+    "images": [
+        "https://应用的展示内容截图链接",
+        "https://应用的展示内容截图链接",
+        "https://应用的展示内容截图链接",
+        "https://应用的展示内容截图链接"
+    ],
+    "languages": [
+        "中文"
+    ],
+    "author": [
+        "@demo.demo"
+    ],
+    "change_log": "1.这里显示版本更新内融\n2.换行显示内容",
+    "version": "",
+    "home": "https://www.demo.demo",
+    "homepage_url": "https://www.demo.demo",
+    "categories": [
+        "application"
+    ]
+}

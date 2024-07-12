@@ -5,7 +5,7 @@
       <f7-toolbar class="tab-menu" bottom tabbar>
         <f7-link tab-link="#tab-a" tab-link-active>{{lang('我的节点')}}</f7-link>
         <f7-link tab-link="#tab-b">{{lang('我的收益')}}</f7-link>
-        <f7-link tab-link="#tab-c">{{lang('矩阵图')}}</f7-link>
+        <f7-link tab-link="#tab-c">{{lang('网络图')}}</f7-link>
       </f7-toolbar>
       <f7-tabs animated>
         <f7-tab id="tab-a" class="tab-content" tab-active>
@@ -18,18 +18,18 @@
               <p>{{lang('分享节点')}}</p>
               <p>{{ userinfo.recommendTotal }}</p>
             </div>
-            <div class="node-head-item">
+            <!-- <div class="node-head-item">
               <p>{{lang('总业绩')}}</p>
               <p>{{userinfo.areaAll}}</p>
-            </div>
-            <div class="node-head-item">
+            </div> -->
+            <!-- <div class="node-head-item">
               <p>{{lang('大区业绩')}}</p>
               <p>{{userinfo.areaMax}}</p>
             </div>
             <div class="node-head-item">
               <p>{{lang('小区业绩')}}</p>
               <p>{{userinfo.areaMin}}</p>
-            </div>
+            </div> -->
             <div class="node-head-item">
               <p>{{lang('推荐人')}}</p>
               <p style="font-size: 13px">{{ formatAddress(userinfo.inviteUserAddress) }}</p>
@@ -54,33 +54,33 @@
                   <p>{{lang('节点')}}</p>
                   <p>{{userinfo.locationUsdt || 0}}</p>
                 </div>
-                <div class="income-footer-item">
+                <!-- <div class="income-footer-item">
                   <p>{{lang('待产出')}}</p>
                   <p>{{userinfo.locationCurrentMaxSub || 0}}</p>
                 </div>
                 <div class="income-footer-item">
                   <p>{{lang('已产量')}}</p>
                   <p>{{userinfo.locationCurrentSub || 0}}</p>
-                </div>
-                <div class="income-footer-item">
+                </div> -->
+                <!-- <div class="income-footer-item">
                   <p>{{lang('出局次数')}}</p>
                   <p>{{userinfo.count || 0}}</p>
-                </div>
+                </div> -->
                 <div class="income-footer-item">
                   <p>{{lang('挖矿收益')}}</p>
-                  <p>{{userinfo.locationReward}}</p>
+                  <p>{{userinfo.rewardFirst}}</p>
                 </div>
-                <div class="income-footer-item">
+                <!-- <div class="income-footer-item">
                   <p>{{lang('分享收益')}}</p>
                   <p>{{userinfo.recommendReward}}</p>
+                </div> -->
+                <div class="income-footer-item">
+                  <p>{{lang('节点收益')}}</p>
+                  <p>{{userinfo.rewardSecond}}</p>
                 </div>
                 <div class="income-footer-item">
-                  <p>{{lang('矩阵收益')}}</p>
-                  <p>{{userinfo.areaReward}}</p>
-                </div>
-                <div class="income-footer-item">
-                  <p>{{lang('前四名收益')}}</p>
-                  <p>{{userinfo.fourReward}}</p>
+                  <p>{{lang('超级节点收益')}}</p>
+                  <p>{{userinfo.rewardThird}}</p>
                 </div>
               </div>
             </div>

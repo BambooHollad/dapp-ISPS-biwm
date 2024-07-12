@@ -4,40 +4,40 @@
       <img :src="banner" />
     </div>
     <div class="main">
-      <RollingNew></RollingNew>
-      <div class="show-content-banner">
-        <div class="content-banner-item" style="align-items: flex-start">
-          <div class="content-banner-name">{{lang('时间')}}</div>
-          <div class="content-banner-data">{{dayjs(userinfo.time * 1000).format('MM月DD日')}}</div>
-        </div>
-        <div class="content-banner-item" style="align-items: center">
-          <div class="content-banner-name">{{lang('代币')}}</div>
-          <div class="content-banner-data">ISPS</div>
-        </div>
-        <div class="content-banner-item" style="align-items: flex-end">
-          <div class="content-banner-name">{{lang('价格')}}</div>
-          <div class="content-banner-data">${{userinfo.biwPrice}}</div>
-        </div>
-      </div>
-      <div class="title">{{lang('全球前四名奖励')}}</div>
+      <!-- <RollingNew></RollingNew> -->
+      <div class="title">{{lang('全球节点')}}</div>
       <div class="content-box">
         <f7-toolbar class="tab-menu" bottom tabbar>
-          <f7-link tab-link="#tab-1" tab-link-active>{{lang('日销售前四')}}{{userinfo.fourRewardPool}}U</f7-link>
-          <f7-link tab-link="#tab-2">{{lang('日沉淀总数')}}{{userinfo.fourRewardPoolYes}}U</f7-link>
+          <f7-link tab-link="#tab-1" tab-link-active>{{lang('今日认购初级节点')}}</f7-link>
+          <f7-link tab-link="#tab-2">{{lang('今日认购超级节点')}}</f7-link>
         </f7-toolbar>
         <f7-tabs animated>
           <f7-tab id="tab-1" class="tab-content" tab-active>
-            <ul class="ranking-table">
+            <!-- <ul class="ranking-table">
               <li>{{lang('排名')}}</li>
-              <li>{{lang('节点')}}</li>
+              <li style="flex: 1;">{{lang('节点')}}</li>
               <li>{{lang('分享节点')}}</li>
               <li>{{lang('奖励')}}</li>
+            </ul> -->
+            <ul class="ranking-table" v-for="(item, index) in userinfo.first" :key="index">
+              <!-- <li><i :class="`no-${index + 1}-icon`"></i></li> -->
+              <li style="flex: 1;">{{item.address}}</li>
+              <!-- <li>{{item.amount}}</li>
+              <li>{{item.reward}}</li> -->
             </ul>
-            <ul class="ranking-table" v-for="(item, index) in userinfo.four" :key="index">
-              <li><i :class="`no-${index + 1}-icon`"></i></li>
-              <li>{{formatAddress(item.location)}}</li>
-              <li>{{item.amount}}</li>
-              <li>{{item.reward}}</li>
+          </f7-tab>
+          <f7-tab id="tab-2" class="tab-content" tab-active>
+            <!-- <ul class="ranking-table">
+              <li>{{lang('排名')}}</li>
+              <li style="flex: 1;">{{lang('节点')}}</li>
+              <li>{{lang('分享节点')}}</li>
+              <li>{{lang('奖励')}}</li>
+            </ul> -->
+            <ul class="ranking-table" v-for="(item, index) in userinfo.Second" :key="index">
+              <!-- <li><i :class="`no-${index + 1}-icon`"></i></li> -->
+              <li style="flex: 1;">{{item.address}}</li>
+              <!-- <li>{{item.amount}}</li>
+              <li>{{item.reward}}</li> -->
             </ul>
           </f7-tab>
         </f7-tabs>
@@ -49,32 +49,32 @@
           <div class="exchange-box">
             <i class="exchange-icon icon-isps"></i>
             <div class="exchange-info">
-              <div class="exchange-name">ISPS</div>
-              <div class="exchange-price">{{ userinfo.balanceBiw }}</div>
+              <div class="exchange-name">BIW</div>
+              <div class="exchange-price">{{ userinfo.biwBalance }}</div>
             </div>
-            <button class="exchange-button" @click="showExchange = true">{{lang('兑换 ISPS')}}</button>
+            <button class="exchange-button" disabled @click="showExchange = true">{{lang('暂未开放')}}</button>
           </div>
           <div class="exchange-data">
             <div class="exchange-data-item">
-              <div class="exchange-data-name">{{lang('总分配')}}(ISPS)</div>
-              <div class="exchange-data-value">{{ userinfo.configOne }}</div>
+              <div class="exchange-data-name">{{lang('总分配')}}(BIW)</div>
+              <div class="exchange-data-value">21亿</div>
             </div>
             <div class="exchange-data-item">
-              <div class="exchange-data-name">24H{{lang('产出')}}(ISPS)</div>
-              <div class="exchange-data-value">{{ userinfo.configTwo }}</div>
+              <div class="exchange-data-name">24H{{lang('产出')}}(BIW)</div>
+              <div class="exchange-data-value">22830</div>
             </div>
             <div class="exchange-data-item">
-              <div class="exchange-data-name">{{lang('算力回报率')}}(APY)</div>
+              <div class="exchange-data-name">{{lang('算力回报率')}}</div>
               <div class="exchange-data-value">{{ userinfo.configThree }}%</div>
             </div>
             <div class="exchange-data-item">
-              <div class="exchange-data-name">{{lang('金库回报率')}}(APY)</div>
-              <div class="exchange-data-value">{{ userinfo.configFour }}%</div>
+              <div class="exchange-data-name">{{lang('每日沉淀池')}}(BIW)</div>
+              <div class="exchange-data-value">{{ userinfo.configFour }}</div>
             </div>
           </div>
         </div>
       </div>
-      <div class="title">{{lang('锁仓分布图')}}</div>
+      <div class="title">{{lang('BIW发行量')}}</div>
       <div class="content-box" style="padding: 20px 10px;">
         <div class="chart">
           <div class="chart-main">
@@ -82,13 +82,13 @@
           </div>
           <ul class="chart-list">
             <li>
-              {{lang('锁仓')}}: <span>4849943920</span>
+              {{lang('发行量')}}: <span>21亿</span>
             </li>
           </ul>
         </div>
-        <div class="chart-address">
+        <!-- <div class="chart-address">
           {{lang('锁仓地址')}}<br>0x8b2e569d06413Bfae8d0c1709D2D1E0443B61576
-        </div>
+        </div> -->
       </div>
       <div class="title">{{lang('合作伙伴')}}</div>
       <div class="content-box" style="padding: 20px 10px;">
@@ -102,8 +102,8 @@
             <p>Protocol Labs</p>
           </div>
           <div class="link-item">
-            <img src="../../../assets/images/link-3.png" alt="">
-            <p>DSPA</p>
+            <img src="../../../assets/images/biw-logo.jpg" style="border-radius: 50%" alt="">
+            <p>BIW</p>
           </div>
           <div class="link-item">
             <img src="../../../assets/images/link-4.png" alt="">
@@ -123,9 +123,23 @@ import dayjs from 'dayjs'
 import lang from '@/i18n/index'
 import RollingNew from './rollingNew.vue';
 import { defineProps, defineEmits } from 'vue'
+// import BiwMeta from '@/services/index'
 
 const person = userPerson();
 const userinfo = $computed(() => person.userinfo);
+
+// const biwMeta = new BiwMeta();
+
+// let biwBalance: any = $ref('0.00')
+
+// const initBiwBalance = async () => {
+//   const balance = await biwMeta.getBalance()
+
+//   biwBalance = balance
+// }
+
+// initBiwBalance()
+
 let showExchange = $ref(false)
 
 const props = defineProps({

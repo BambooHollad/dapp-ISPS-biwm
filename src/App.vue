@@ -30,7 +30,6 @@ const f7params = {
 system.initTime();
 onMounted(async () => {
     await nextTick();
-    console.log('person', person)
     person.init();
 })
 </script>
